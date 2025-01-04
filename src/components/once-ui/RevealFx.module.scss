@@ -1,8 +1,7 @@
 .revealFx {
     mask-image: linear-gradient(to right, black 0%, black 25%, transparent 50%);
     mask-size: 300% 100%;
-    transition: mask-position ease-in-out, filter ease-in-out;
-    will-change: mask-position, filter;
+    transition: all ease-in-out;
   
     &.hidden {
       mask-position: 100% 0;

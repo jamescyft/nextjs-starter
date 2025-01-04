@@ -1,15 +1,11 @@
 "use client";
 
 import React, { useState, useEffect, forwardRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { SpacingToken } from "../../types";
+import { SpacingToken } from "../types";
 import styles from "./RevealFx.module.scss";
 import { Flex } from ".";
-import { ANIMATION_KEYS, TRANSITIONS } from "../../lib/constants/animations";
 
-type FlexProps = React.ComponentProps<typeof Flex>;
-
-interface RevealFxProps extends Omit<FlexProps, 'animation'> {
+interface RevealFxProps extends React.ComponentProps<typeof Flex> {
   children: React.ReactNode;
   speed?: "slow" | "medium" | "fast";
   delay?: number;
@@ -18,7 +14,6 @@ interface RevealFxProps extends Omit<FlexProps, 'animation'> {
   trigger?: boolean;
   style?: React.CSSProperties;
   className?: string;
-  animation?: keyof typeof ANIMATION_KEYS;
 }
 
 const RevealFx = forwardRef<HTMLDivElement, RevealFxProps>(
@@ -32,7 +27,6 @@ const RevealFx = forwardRef<HTMLDivElement, RevealFxProps>(
       trigger,
       style,
       className,
-      animation = 'fadeUp',
       ...rest
     },
     ref,
@@ -84,28 +78,18 @@ const RevealFx = forwardRef<HTMLDivElement, RevealFxProps>(
     };
 
     return (
-      <motion.div
-        initial={ANIMATION_KEYS[animation].initial}
-        animate={isRevealed ? ANIMATION_KEYS[animation].animate : ANIMATION_KEYS[animation].initial}
-        transition={{
-          duration: speed === 'fast' ? 0.2 : speed === 'slow' ? 0.5 : 0.3,
-          ease: TRANSITIONS.normal.ease,
-          delay: delay
-        }}
+      <Flex
+        fillWidth
+        position="relative"
+        justifyContent="center"
+        ref={ref}
+        aria-hidden="true"
+        style={revealStyle}
+        className={`${styles.revealFx} ${isRevealed ? styles.revealed : styles.hidden} ${className || ""}`}
+        {...rest}
       >
-        <Flex
-          fillWidth
-          position="relative"
-          justifyContent="center"
-          ref={ref}
-          aria-hidden="true"
-          style={revealStyle}
-          className={`${styles.revealFx} ${isRevealed ? styles.revealed : styles.hidden} ${className || ""}`}
-          {...rest}
-        >
-          {children}
-        </Flex>
-      </motion.div>
+        {children}
+      </Flex>
     );
   },
 );
