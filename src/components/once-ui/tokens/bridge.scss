@@ -1,0 +1,47 @@
+// Bridge between Once UI tokens and desertSystem
+// This file maps desertSystem tokens to Once UI's token system while maintaining
+// Once UI as the primary design system
+
+@use '../../../once-ui/tokens/theme.scss' as *;
+
+:root {
+  // Color System Bridge
+  // Map desert system colors to Once UI's comprehensive color system
+  --desert-color-primary: var(--brand-background-strong);
+  --desert-color-secondary: var(--accent-background-strong);
+  --desert-color-neutral: var(--neutral-background-strong);
+  
+  // Background Colors - Using Once UI's background system
+  --desert-bg-primary: var(--brand-background-weak);
+  --desert-bg-secondary: var(--accent-background-weak);
+  --desert-bg-neutral: var(--neutral-background-weak);
+  
+  // Text Colors - Leveraging Once UI's typography system
+  --desert-text-primary: var(--brand-on-background-strong);
+  --desert-text-secondary: var(--accent-on-background-strong);
+  --desert-text-neutral: var(--neutral-on-background-strong);
+  
+  // Spacing System Bridge - Using Once UI's static spacing scale
+  --desert-space-1: var(--static-space-4);    // 4px
+  --desert-space-2: var(--static-space-8);    // 8px
+  --desert-space-3: var(--static-space-12);   // 12px
+  --desert-space-4: var(--static-space-16);   // 16px
+  --desert-space-5: var(--static-space-20);   // 20px
+  --desert-space-6: var(--static-space-24);   // 24px
+  --desert-space-8: var(--static-space-32);   // 32px
+  --desert-space-10: var(--static-space-40);  // 40px
+  --desert-space-12: var(--static-space-48);  // 48px
+  
+  // Border Radius Bridge - Using Once UI's radius system
+  --desert-radius-sm: var(--radius-xs);
+  --desert-radius-md: var(--radius-s);
+  --desert-radius-lg: var(--radius-m);
+  
+  // Shadow System Bridge - Using Once UI's shadow system
+  --desert-shadow-sm: var(--shadow-xs);
+  --desert-shadow-md: var(--shadow-s);
+  --desert-shadow-lg: var(--shadow-m);
+}
+
+// Note: This bridge maintains Once UI as the primary system while providing
+// backward compatibility for existing desert system usage
