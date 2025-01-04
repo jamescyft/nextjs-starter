@@ -1,5 +1,8 @@
+"use client";
+
 import classNames from "classnames";
-import { Flex, Text } from ".";
+import { Flex } from "../ui/Flex";
+import { Text } from "../ui/Text";
 import styles from "./Option.module.scss";
 import { ElementType } from "./ElementType";
 import React, { forwardRef } from "react";
