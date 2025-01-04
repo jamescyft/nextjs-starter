@@ -1,9 +1,9 @@
 // Animation constants for the design system
 // These constants are used with Framer Motion for consistent animations
 
-import { Variants } from 'framer-motion';
+import { AnimationVariant } from '../../types';
 
-export const ANIMATION_KEYS: Record<string, Variants> = {
+export const ANIMATION_KEYS: Record<string, AnimationVariant> = {
   fadeUp: {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
