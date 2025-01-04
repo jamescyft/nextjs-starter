@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import React, { ReactNode, forwardRef } from "react";
+import { Flex } from "../ui/Flex";
+import { Text } from "../ui/Text";
 
 interface ElementTypeProps {
   href?: string;
