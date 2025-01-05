@@ -82,25 +82,43 @@ export function RealityMirror({ className }: RealityMirrorProps) {
       <Flex gap="xl">
         {/* Left side: Reality cards */}
         <TiltFx fillWidth radius="xl" overflow="hidden">
-          <HoloFx fill>
+          <HoloFx 
+            fill
+            light={{
+              opacity: 60,
+              blending: "color-dodge",
+              mask: { maskPosition: "50 100" }
+            }}
+            burn={{
+              opacity: 40,
+              filter: "brightness(0.9) contrast(1.8)",
+              blending: "color-dodge",
+              mask: { maskPosition: "75 125" }
+            }}
+            texture={{
+              opacity: 20,
+              blending: "color-dodge",
+              mask: { maskPosition: "100 150" }
+            }}>
             <Background
               fill
               position="absolute"
               gradient={{
                 display: true,
                 tilt: -45,
-                height: 150,
-                width: 100,
-                x: 50,
+                height: 200,
+                width: 150,
+                x: 65,
                 y: -25,
                 colorStart: "warning-solid-strong",
                 colorEnd: "warning-solid-weak",
+                opacity: 90
               }}
               grid={{
                 display: true,
-                opacity: 90,
+                opacity: 20,
                 width: "0.25rem",
-                color: "warning-alpha-medium",
+                color: "warning-alpha-strong",
                 height: "0.25rem",
               }}
               mask={{
@@ -157,19 +175,49 @@ export function RealityMirror({ className }: RealityMirrorProps) {
         
         {/* Right side: AI cards */}
         <TiltFx fillWidth radius="xl" overflow="hidden">
-          <HoloFx fill>
+          <HoloFx 
+            fill
+            light={{
+              opacity: 60,
+              blending: "color-dodge",
+              mask: { maskPosition: "50 100" }
+            }}
+            burn={{
+              opacity: 40,
+              filter: "brightness(0.9) contrast(1.8)",
+              blending: "color-dodge",
+              mask: { maskPosition: "75 125" }
+            }}
+            texture={{
+              opacity: 20,
+              blending: "color-dodge",
+              mask: { maskPosition: "100 150" }
+            }}>
             <Background
               fill
               position="absolute"
               gradient={{
                 display: true,
                 tilt: 45,
-                height: 150,
-                width: 100,
-                x: 50,
+                height: 200,
+                width: 150,
+                x: 65,
                 y: -25,
                 colorStart: "brand-solid-strong",
                 colorEnd: "brand-solid-weak",
+                opacity: 90
+              }}
+              grid={{
+                display: true,
+                opacity: 20,
+                width: "0.25rem",
+                color: "brand-alpha-strong",
+                height: "0.25rem",
+              }}
+              mask={{
+                x: 65,
+                y: 35,
+                radius: 100,
               }}
             />
             <Flex direction="column" gap="l" maxWidth="xl" position="relative">

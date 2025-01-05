@@ -35,8 +35,8 @@ const TiltFx: React.FC<TiltFxProps> = ({ children, ...rest }) => {
     const deltaX = (offsetX - centerX) / centerX;
     const deltaY = (offsetY - centerY) / centerY;
 
-    const rotateX = -deltaY * 15;
-    const rotateY = -deltaX * 15;
+    const rotateX = -deltaY * 10;
+    const rotateY = -deltaX * 10;
 
     window.requestAnimationFrame(() => {
       element.style.transform = `perspective(1000px) translate3d(0, 0, 30px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
@@ -51,7 +51,7 @@ const TiltFx: React.FC<TiltFxProps> = ({ children, ...rest }) => {
       resetTimeout = setTimeout(() => {
         element.style.transform =
           "perspective(1000px) translate3d(0, 0, 0) rotateX(0deg) rotateY(0deg)";
-      }, 100);
+      }, 200);
     }
   };
 

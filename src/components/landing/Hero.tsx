@@ -94,31 +94,50 @@ export function Hero({ className, onDemoClick }: HeroProps) {
           border="accent-alpha-weak"
           overflow="hidden"
         >
-          <HoloFx fill>
+          <HoloFx 
+            fill
+            light={{
+              opacity: 40,
+              blending: "color-dodge",
+              mask: { maskPosition: "75 125" }
+            }}
+            burn={{
+              opacity: 30,
+              filter: "brightness(0.8) contrast(2)",
+              blending: "color-dodge",
+              mask: { maskPosition: "100 150" }
+            }}
+            texture={{
+              opacity: 15,
+              blending: "color-dodge",
+              mask: { maskPosition: "125 175" }
+            }}
+          >
             <Background
               fill
               position="absolute"
               gradient={{
                 display: true,
                 tilt: -45,
-                height: 150,
-                width: 100,
-                x: 75,
-                y: -50,
+                height: 200,
+                width: 150,
+                x: 65,
+                y: -25,
                 colorStart: "brand-solid-strong",
                 colorEnd: "accent-solid-weak",
+                opacity: 90
               }}
               grid={{
                 display: true,
-                opacity: 90,
+                opacity: 10,
                 width: "0.25rem",
-                color: "brand-alpha-medium",
+                color: "brand-alpha-strong",
                 height: "0.25rem",
               }}
               mask={{
-                x: 50,
-                y: 25,
-                radius: 75,
+                x: 65,
+                y: 35,
+                radius: 100,
               }}
             >
               <RevealFx delay={0.3}>
