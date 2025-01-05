@@ -1,13 +1,13 @@
-import "@/components/once-ui/styles/index.scss";
-import "@/components/once-ui/tokens/index.scss";
+import "@/once-ui/styles/index.scss";
+import "@/once-ui/tokens/index.scss";
 
 import classNames from "classnames";
 import { headers } from "next/headers";
 import { Metadata } from "next";
 
-import { baseURL, style, meta, og, schema, social } from "@/components/once-ui/resources/config";
+import { baseURL, style, meta, og, schema, social } from "@/once-ui/resources/config";
 
-import { Background, Flex, ToastProvider } from "@/components/once-ui";
+import { Background, Flex, ToastProvider } from "@/once-ui/components";
 
 import { Inter } from "next/font/google";
 import { Roboto_Mono } from "next/font/google";
@@ -97,11 +97,9 @@ export default function RootLayout({
   return (
     <Flex
       as="html"
+      lang="en"
       fillHeight
       background="page"
-      {...{
-        lang: "en"
-      }}
       data-neutral={style.neutral}
       data-brand={style.brand}
       data-accent={style.accent}
