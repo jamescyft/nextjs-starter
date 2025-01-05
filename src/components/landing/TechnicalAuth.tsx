@@ -3,6 +3,9 @@ import { Flex } from '@/once-ui/components/Flex';
 import { RevealFx } from '@/once-ui/components/RevealFx';
 import { Icon } from '@/once-ui/components/Icon';
 import { Text } from '@/once-ui/components/Text';
+import { TiltFx } from '@/once-ui/components/TiltFx';
+import { HoloFx } from '@/once-ui/components/HoloFx';
+import { Background } from '@/once-ui/components/Background';
 
 interface TechnicalAuthProps {
   className?: string;
@@ -78,58 +81,88 @@ export function TechnicalAuth({ className }: TechnicalAuthProps) {
       </Text>
       
       {/* Integration Points */}
-      <Flex direction="column" gap="l">
-        <Text variant="heading-strong-l">
-          Connects to Your Core Systems
-        </Text>
-        <Flex gap="l" wrap={true}>
-          {integrationPoints.map((point, index) => (
-            <RevealFx key={point.title} delay={0.2 * index}>
-              <Flex
-                direction="column"
-                background="neutral-strong"
-                padding="l"
-                radius="m"
-                gap="s"
-                width={32}
-                flex={1}
-              >
-                <Flex gap="m" alignItems="center">
-                  <Icon
-                    name={point.icon}
-                    size="m"
-                    onBackground="brand-strong"
-                  />
-                  <Text
-                    variant="heading-default-m"
-                    onBackground="neutral-strong"
+      <TiltFx fillWidth radius="xl" overflow="hidden">
+        <HoloFx fill>
+          <Background
+            fill
+            position="absolute"
+            gradient={{
+              display: true,
+              tilt: -30,
+              height: 150,
+              width: 100,
+              x: 25,
+              y: -25,
+              colorStart: "brand-solid-strong",
+              colorEnd: "accent-solid-weak",
+            }}
+            grid={{
+              display: true,
+              opacity: 90,
+              width: "0.25rem",
+              color: "brand-alpha-medium",
+              height: "0.25rem",
+            }}
+            mask={{
+              x: 50,
+              y: 25,
+              radius: 75,
+            }}
+          />
+          <Flex direction="column" gap="l" position="relative">
+            <Text variant="heading-strong-l">
+              Connects to Your Core Systems
+            </Text>
+            <Flex gap="l" wrap={true}>
+              {integrationPoints.map((point, index) => (
+                <RevealFx key={point.title} delay={0.2 * index}>
+                  <Flex
+                    direction="column"
+                    background="neutral-strong"
+                    padding="l"
+                    radius="m"
+                    gap="s"
+                    width={32}
+                    flex={1}
                   >
-                    {point.title}
-                  </Text>
-                </Flex>
-                <Text
-                  variant="body-default-s"
-                  onBackground="neutral-strong"
-                >
-                  {point.description}
-                </Text>
-                <Text
-                  variant="body-default-xs"
-                  onBackground="neutral-weak"
-                >
-                  {point.path}
-                </Text>
-                <Text
-                  variant="body-default-s"
-                  onBackground="brand-weak"
-                >
-                  {point.status}
-                </Text>
-              </Flex>
-            </RevealFx>
-          ))}
-        </Flex>
-      </Flex>
+                    <Flex gap="m" alignItems="center">
+                      <Icon
+                        name={point.icon}
+                        size="m"
+                        onBackground="brand-strong"
+                      />
+                      <Text
+                        variant="heading-default-m"
+                        onBackground="neutral-strong"
+                      >
+                        {point.title}
+                      </Text>
+                    </Flex>
+                    <Text
+                      variant="body-default-s"
+                      onBackground="neutral-strong"
+                    >
+                      {point.description}
+                    </Text>
+                    <Text
+                      variant="body-default-xs"
+                      onBackground="neutral-weak"
+                    >
+                      {point.path}
+                    </Text>
+                    <Text
+                      variant="body-default-s"
+                      onBackground="brand-weak"
+                    >
+                      {point.status}
+                    </Text>
+                  </Flex>
+                </RevealFx>
+              ))}
+            </Flex>
+          </Flex>
+        </HoloFx>
+      </TiltFx>
 
       {/* Implementation Points */}
       <Flex direction="column" gap="l">

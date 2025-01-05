@@ -4,6 +4,9 @@ import { Button } from '../../once-ui/components/Button';
 import { RevealFx } from '../../once-ui/components/RevealFx';
 import { Text } from '../../once-ui/components/Text';
 import { Icon } from '../../once-ui/components/Icon';
+import { TiltFx } from '../../once-ui/components/TiltFx';
+import { HoloFx } from '../../once-ui/components/HoloFx';
+import { Background } from '../../once-ui/components/Background';
 
 interface HeroProps {
   className?: string;
@@ -84,14 +87,62 @@ export function Hero({ className, onDemoClick }: HeroProps) {
       </Flex>
       
       <Flex className="relative">
-        <RevealFx delay={0.3}>
-          {/* Knowledge Flow Diagram with technical markers */}
-          <Flex background="neutral-strong" padding="m" radius="m">
-            <Text variant="code-default-s" onBackground="neutral-weak" className="font-mono">
-              system.capture.status: active
-            </Text>
-          </Flex>
-        </RevealFx>
+        <TiltFx
+          aspectRatio="16 / 9"
+          fillWidth
+          radius="xl"
+          border="accent-alpha-weak"
+          overflow="hidden"
+        >
+          <HoloFx fill>
+            <Background
+              fill
+              position="absolute"
+              gradient={{
+                display: true,
+                tilt: -45,
+                height: 150,
+                width: 100,
+                x: 75,
+                y: -50,
+                colorStart: "brand-solid-strong",
+                colorEnd: "accent-solid-weak",
+              }}
+              grid={{
+                display: true,
+                opacity: 90,
+                width: "0.25rem",
+                color: "brand-alpha-medium",
+                height: "0.25rem",
+              }}
+              mask={{
+                x: 50,
+                y: 25,
+                radius: 75,
+              }}
+            >
+              <RevealFx delay={0.3}>
+                {/* Knowledge Flow Diagram with technical markers */}
+                <Flex 
+                  direction="column"
+                  padding="xl"
+                  gap="l"
+                  onSolid="neutral-strong"
+                >
+                  <Text variant="code-default-s" onBackground="neutral-weak" className="font-mono">
+                    system.capture.status: active
+                  </Text>
+                  <Text variant="code-default-s" onBackground="neutral-weak" className="font-mono">
+                    knowledge.flow.rate: 94.7%
+                  </Text>
+                  <Text variant="code-default-s" onBackground="neutral-weak" className="font-mono">
+                    api.health: optimal
+                  </Text>
+                </Flex>
+              </RevealFx>
+            </Background>
+          </HoloFx>
+        </TiltFx>
       </Flex>
     </Flex>
   );

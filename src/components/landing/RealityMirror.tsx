@@ -3,6 +3,9 @@ import { Flex } from '@/once-ui/components/Flex';
 import { RevealFx } from '@/once-ui/components/RevealFx';
 import { Text } from '@/once-ui/components/Text';
 import { Icon } from '@/once-ui/components/Icon';
+import { TiltFx } from '@/once-ui/components/TiltFx';
+import { HoloFx } from '@/once-ui/components/HoloFx';
+import { Background } from '@/once-ui/components/Background';
 
 interface RealityMirrorProps {
   className?: string;
@@ -75,94 +78,144 @@ export function RealityMirror({ className }: RealityMirrorProps) {
       gap="xl"
       className={className}
     >
-      {/* Left side: Reality cards */}
-      <Flex direction="column" gap="l" maxWidth="xl">
-        {realityCards.map((card, index) => (
-          <RevealFx key={card.title} delay={0.2 * index}>
-            <Flex
-              direction="column"
-              background="neutral-strong"
-              padding="l"
-              radius="m"
-              gap="s"
-            >
-              <Flex gap="m" alignItems="center">
-                <Icon
-                  name={card.icon}
-                  size="m"
-                  onBackground={card.variant}
-                />
-                <Text
-                  variant="heading-default-m"
-                  onBackground={card.variant}
-                >
-                  {card.title}
-                </Text>
-              </Flex>
-              {card.subtitle && (
-                <Text
-                  variant="body-default-s"
-                  onBackground="neutral-strong"
-                >
-                  {card.subtitle}
-                </Text>
-              )}
-              {card.path && (
-                <Text
-                  variant="body-default-xs"
-                  onBackground="neutral-weak"
-                >
-                  {card.path}
-                </Text>
-              )}
+      <Flex gap="xl">
+        {/* Left side: Reality cards */}
+        <TiltFx fillWidth radius="xl" overflow="hidden">
+          <HoloFx fill>
+            <Background
+              fill
+              position="absolute"
+              gradient={{
+                display: true,
+                tilt: -45,
+                height: 150,
+                width: 100,
+                x: 50,
+                y: -25,
+                colorStart: "warning-solid-strong",
+                colorEnd: "warning-solid-weak",
+              }}
+              grid={{
+                display: true,
+                opacity: 90,
+                width: "0.25rem",
+                color: "warning-alpha-medium",
+                height: "0.25rem",
+              }}
+              mask={{
+                x: 50,
+                y: 25,
+                radius: 75,
+              }}
+            />
+            <Flex direction="column" gap="l" maxWidth="xl" position="relative">
+              {realityCards.map((card, index) => (
+                <RevealFx key={card.title} delay={0.2 * index}>
+                  <Flex
+                    direction="column"
+                    background="neutral-strong"
+                    padding="l"
+                    radius="m"
+                    gap="s"
+                  >
+                    <Flex gap="m" alignItems="center">
+                      <Icon
+                        name={card.icon}
+                        size="m"
+                        onBackground={card.variant}
+                      />
+                      <Text
+                        variant="heading-default-m"
+                        onBackground={card.variant}
+                      >
+                        {card.title}
+                      </Text>
+                    </Flex>
+                    {card.subtitle && (
+                      <Text
+                        variant="body-default-s"
+                        onBackground="neutral-strong"
+                      >
+                        {card.subtitle}
+                      </Text>
+                    )}
+                    {card.path && (
+                      <Text
+                        variant="body-default-xs"
+                        onBackground="neutral-weak"
+                      >
+                        {card.path}
+                      </Text>
+                    )}
+                  </Flex>
+                </RevealFx>
+              ))}
             </Flex>
-          </RevealFx>
-        ))}
-      </Flex>
-      
-      {/* Right side: AI cards */}
-      <Flex direction="column" gap="l" maxWidth="xl">
-        {aiCards.map((card, index) => (
-          <RevealFx key={card.title} delay={0.3 * index}>
-            <Flex
-              direction="column"
-              background="neutral-strong"
-              padding="l"
-              radius="m"
-              gap="s"
-            >
-              <Flex gap="m" alignItems="center">
-                <Icon
-                  name={card.icon}
-                  size="m"
-                  onBackground={card.variant}
-                />
-                <Text
-                  variant="heading-default-m"
-                  onBackground={card.variant}
-                >
-                  {card.title}
-                </Text>
-              </Flex>
-              {card.subtitle && (
-                <Text
-                  variant="body-default-s"
-                  onBackground="neutral-strong"
-                >
-                  {card.subtitle}
-                </Text>
-              )}
-              {card.path && (
-                <Text
-                  variant="body-default-xs"
-                  onBackground="neutral-weak"
-                >
-                  {card.path}
-                </Text>
-              )}
+          </HoloFx>
+        </TiltFx>
+        
+        {/* Right side: AI cards */}
+        <TiltFx fillWidth radius="xl" overflow="hidden">
+          <HoloFx fill>
+            <Background
+              fill
+              position="absolute"
+              gradient={{
+                display: true,
+                tilt: 45,
+                height: 150,
+                width: 100,
+                x: 50,
+                y: -25,
+                colorStart: "brand-solid-strong",
+                colorEnd: "brand-solid-weak",
+              }}
+            />
+            <Flex direction="column" gap="l" maxWidth="xl" position="relative">
+              {aiCards.map((card, index) => (
+                <RevealFx key={card.title} delay={0.3 * index}>
+                  <Flex
+                    direction="column"
+                    background="neutral-strong"
+                    padding="l"
+                    radius="m"
+                    gap="s"
+                  >
+                    <Flex gap="m" alignItems="center">
+                      <Icon
+                        name={card.icon}
+                        size="m"
+                        onBackground={card.variant}
+                      />
+                      <Text
+                        variant="heading-default-m"
+                        onBackground={card.variant}
+                      >
+                        {card.title}
+                      </Text>
+                    </Flex>
+                    {card.subtitle && (
+                      <Text
+                        variant="body-default-s"
+                        onBackground="neutral-strong"
+                      >
+                        {card.subtitle}
+                      </Text>
+                    )}
+                    {card.path && (
+                      <Text
+                        variant="body-default-xs"
+                        onBackground="neutral-weak"
+                      >
+                        {card.path}
+                      </Text>
+                    )}
+                  </Flex>
+                </RevealFx>
+              ))}
             </Flex>
-          </RevealFx>
-        ))}
+          </HoloFx>
+        </TiltFx>
       </Flex>
     </Flex>
   );

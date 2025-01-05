@@ -3,6 +3,9 @@ import { Flex } from '@/once-ui/components/Flex';
 import { RevealFx } from '@/once-ui/components/RevealFx';
 import { Icon } from '@/once-ui/components/Icon';
 import { Text } from '@/once-ui/components/Text';
+import { TiltFx } from '@/once-ui/components/TiltFx';
+import { HoloFx } from '@/once-ui/components/HoloFx';
+import { Background } from '@/once-ui/components/Background';
 
 interface ValuePoint {
   title: string;
@@ -56,50 +59,80 @@ export function ValueCrystallization() {
         Turn Knowledge Into Value
       </Text>
       
-      <Flex gap="l" wrap={true}>
-        {values.map((value, index) => (
-          <RevealFx key={value.title} delay={index * 0.2}>
-            <Flex
-              direction="column"
-              background="neutral-medium"
-              padding="l"
-              radius="m"
-              gap="s"
-              width={32}
-              flex={1}
-            >
-              <Flex gap="m" alignItems="center">
-                <Icon
-                  name={value.icon}
-                  size="l"
-                  onBackground="brand-strong"
-                />
-                <Text
-                  variant="heading-default-m"
-                  onBackground="neutral-medium"
+      <TiltFx fillWidth radius="xl" overflow="hidden">
+        <HoloFx fill>
+          <Background
+            fill
+            position="absolute"
+            gradient={{
+              display: true,
+              tilt: 30,
+              height: 150,
+              width: 100,
+              x: 75,
+              y: -25,
+              colorStart: "brand-solid-strong",
+              colorEnd: "brand-solid-weak",
+            }}
+            grid={{
+              display: true,
+              opacity: 90,
+              width: "0.25rem",
+              color: "brand-alpha-medium",
+              height: "0.25rem",
+            }}
+            mask={{
+              x: 50,
+              y: 25,
+              radius: 75,
+            }}
+          />
+          <Flex gap="l" wrap={true} position="relative">
+            {values.map((value, index) => (
+              <RevealFx key={value.title} delay={index * 0.2}>
+                <Flex
+                  direction="column"
+                  background="neutral-medium"
+                  padding="l"
+                  radius="m"
+                  gap="s"
+                  width={32}
+                  flex={1}
                 >
-                  {value.title}
-                </Text>
-              </Flex>
-              <Text
-                variant="body-default-s"
-                onBackground="neutral-medium"
-              >
-                {value.description}
-              </Text>
-              {value.metrics.map((metric, idx) => (
-                <Text
-                  key={metric}
-                  variant={idx === 2 ? "body-default-xs" : "body-default-s"}
-                  onBackground={idx === 2 ? "neutral-weak" : "brand-weak"}
-                >
-                  {metric}
-                </Text>
-              ))}
-            </Flex>
-          </RevealFx>
-        ))}
-      </Flex>
+                  <Flex gap="m" alignItems="center">
+                    <Icon
+                      name={value.icon}
+                      size="l"
+                      onBackground="brand-strong"
+                    />
+                    <Text
+                      variant="heading-default-m"
+                      onBackground="neutral-medium"
+                    >
+                      {value.title}
+                    </Text>
+                  </Flex>
+                  <Text
+                    variant="body-default-s"
+                    onBackground="neutral-medium"
+                  >
+                    {value.description}
+                  </Text>
+                  {value.metrics.map((metric, idx) => (
+                    <Text
+                      key={metric}
+                      variant={idx === 2 ? "body-default-xs" : "body-default-s"}
+                      onBackground={idx === 2 ? "neutral-weak" : "brand-weak"}
+                    >
+                      {metric}
+                    </Text>
+                  ))}
+                </Flex>
+              </RevealFx>
+            ))}
+          </Flex>
+        </HoloFx>
+      </TiltFx>
     </Flex>
   );
 }
