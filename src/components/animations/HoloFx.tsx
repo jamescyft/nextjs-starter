@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef } from "react";
 import styles from "./HoloFx.module.scss";
-import { Flex } from ".";
+import { Flex } from "@/components/once-ui/Flex";
 import { CSSProperties } from "react";
 import classNames from "classnames";
 

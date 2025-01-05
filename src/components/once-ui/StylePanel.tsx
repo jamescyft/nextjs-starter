@@ -5,7 +5,7 @@ import { Flex, Heading, Text, SegmentedControl, IconButton, Scroller, Column } f
 
 import styles from "./StylePanel.module.scss";
 import classNames from "classnames";
-import { style } from "../resources/config";
+import { style } from "@/components/once-ui/resources/config";
 
 interface StylePanelProps extends React.ComponentProps<typeof Flex> {
   style?: React.CSSProperties;

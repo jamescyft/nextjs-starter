@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, forwardRef } from "react";
-import { SpacingToken } from "../types";
+import { SpacingToken } from "@/components/once-ui/types";
 import styles from "./RevealFx.module.scss";
-import { Flex } from ".";
+import { Flex } from "@/components/once-ui/Flex";
 
 interface RevealFxProps extends React.ComponentProps<typeof Flex> {
   children: React.ReactNode;

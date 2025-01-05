@@ -89,6 +89,9 @@ export interface CommonProps {
   children?: ReactNode;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
   onKeyDown?: (event: React.KeyboardEvent<HTMLDivElement>) => void;
+  onMouseEnter?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onMouseLeave?: (event: React.MouseEvent<HTMLDivElement>) => void;
+  onMouseMove?: (event: React.MouseEvent<HTMLDivElement>) => void;
   role?: string;
   tabIndex?: number;
   "aria-haspopup"?: string;
@@ -112,3 +115,11 @@ export interface ConditionalProps {
   hide?: string;
   show?: string;
 }
+
+export type ComponentProps = FlexProps &
+  SpacingProps &
+  SizeProps &
+  StyleProps &
+  CommonProps &
+  DisplayProps &
+  ConditionalProps;

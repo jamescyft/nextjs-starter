@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, forwardRef } from "react";
 import styles from "./GlitchFx.module.scss";
-import { Flex } from "./Flex";
+import { Flex } from "@/components/once-ui/Flex";
 import classNames from "classnames";
 
 interface GlitchFxProps extends React.ComponentProps<typeof Flex> {
@@ -83,7 +83,7 @@ const GlitchFx = forwardRef<HTMLDivElement, GlitchFxProps>(
           left="0"
           fill
           zIndex={0}
-          opacity={50}
+          opacity="50"
           className={classNames(styles.glitchLayer, styles.blueShift)}
         >
           {children}
@@ -96,7 +96,7 @@ const GlitchFx = forwardRef<HTMLDivElement, GlitchFxProps>(
           left="0"
           fill
           zIndex={0}
-          opacity={50}
+          opacity="50"
           className={classNames(styles.glitchLayer, styles.redShift)}
         >
           {children}

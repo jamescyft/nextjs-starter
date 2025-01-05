@@ -1,0 +1,17 @@
+.tilt {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.tiltContent {
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.tiltLayer {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  pointer-events: none;
+}

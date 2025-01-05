@@ -1,0 +1,32 @@
+.codeBlock {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  overflow: hidden;
+}
+
+.preview {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  background: var(--color-surface-weak);
+}
+
+.code {
+  position: relative;
+  width: 100%;
+  padding: var(--spacing-md);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.copyButton {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  z-index: 2;
+}

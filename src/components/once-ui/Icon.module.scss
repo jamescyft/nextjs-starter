@@ -1,0 +1,31 @@
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-micro-medium);
+}
+
+.xs {
+    width: var(--static-space-12);
+    height: var(--static-space-12);
+}
+
+.s {
+    width: var(--static-space-16);
+    height: var(--static-space-16);
+}
+
+.m {
+    width: var(--static-space-20);
+    height: var(--static-space-20);
+}
+
+.l {
+    width: var(--static-space-24);
+    height: var(--static-space-24);
+}
+
+.xl {
+    width: var(--static-space-32);
+    height: var(--static-space-32);
+}

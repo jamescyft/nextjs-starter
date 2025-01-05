@@ -16,6 +16,13 @@ interface LogoCloudProps extends React.ComponentProps<typeof Grid> {
   style?: React.CSSProperties;
   limit?: number;
   rotationInterval?: number;
+  columns?: string;
+  mobileColumns?: string;
+  paddingBottom?: string;
+  paddingTop?: string;
+  paddingX?: string;
+  paddingY?: string;
+  fillWidth?: boolean;
 }
 
 const ANIMATION_DURATION = 5000;

@@ -1,15 +1,16 @@
 "use client";
 
 import React, { forwardRef, useState, useEffect, ReactNode } from "react";
+import type { ComponentProps } from "../../interfaces";
 import classNames from "classnames";
 import { IconType } from "react-icons";
-import { iconLibrary } from "../icons";
-import { ColorScheme, ColorWeight } from "../types";
-import { Flex, Tooltip } from ".";
+import { iconLibrary } from "../once-ui/icons";
+import { ColorScheme, ColorWeight } from "../once-ui/types";
+import { Flex, Tooltip } from "../once-ui";
 import styles from "./Icon.module.scss";
 import iconStyles from "./IconButton.module.scss";
 
-interface IconProps extends React.ComponentProps<typeof Flex> {
+interface IconProps extends Pick<ComponentProps, 'className' | 'style' | 'onClick' | 'onMouseEnter' | 'onMouseLeave'> {
   name: string;
   onBackground?: `${ColorScheme}-${ColorWeight}`;
   onSolid?: `${ColorScheme}-${ColorWeight}`;
@@ -33,31 +34,22 @@ const Icon = forwardRef<HTMLDivElement, IconProps>(
     },
     ref,
   ) => {
-    const IconComponent: IconType | undefined = iconLibrary[name];
-
-    if (!IconComponent) {
-      console.warn(`Icon "${name}" does not exist in the library.`);
-      return null;
-    }
-
-    if (onBackground && onSolid) {
-      console.warn(
-        "You cannot use both 'onBackground' and 'onSolid' props simultaneously. Only one will be applied.",
-      );
-    }
-
-    let colorClass = "color-inherit";
-
-    if (onBackground) {
-      const [scheme, weight] = onBackground.split("-") as [ColorScheme, ColorWeight];
-      colorClass = `${scheme}-on-background-${weight}`;
-    } else if (onSolid) {
-      const [scheme, weight] = onSolid.split("-") as [ColorScheme, ColorWeight];
-      colorClass = `${scheme}-on-solid-${weight}`;
-    }
-
     const [isTooltipVisible, setTooltipVisible] = useState(false);
     const [isHover, setIsHover] = useState(false);
+    const [colorClass, setColorClass] = useState("color-inherit");
+    const IconComponent: IconType | undefined = iconLibrary[name];
+
+    useEffect(() => {
+      if (onBackground) {
+        const [scheme, weight] = onBackground.split("-") as [ColorScheme, ColorWeight];
+        setColorClass(`${scheme}-on-background-${weight}`);
+      } else if (onSolid) {
+        const [scheme, weight] = onSolid.split("-") as [ColorScheme, ColorWeight];
+        setColorClass(`${scheme}-on-solid-${weight}`);
+      } else {
+        setColorClass("color-inherit");
+      }
+    }, [onBackground, onSolid]);
 
     useEffect(() => {
       let timer: NodeJS.Timeout;
@@ -71,6 +63,17 @@ const Icon = forwardRef<HTMLDivElement, IconProps>(
 
       return () => clearTimeout(timer);
     }, [isHover]);
+
+    if (!IconComponent) {
+      console.warn(`Icon "${name}" does not exist in the library.`);
+      return null;
+    }
+
+    if (onBackground && onSolid) {
+      console.warn(
+        "You cannot use both 'onBackground' and 'onSolid' props simultaneously. Only one will be applied.",
+      );
+    }
 
     return (
       <Flex

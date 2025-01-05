@@ -1,15 +1,34 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, forwardRef } from "react";
 import styles from "./TiltFx.module.scss";
-import { Flex } from ".";
+import { Flex } from "@/components/once-ui/Flex";
+import {
+  FlexProps,
+  SpacingProps,
+  SizeProps,
+  StyleProps,
+  CommonProps,
+  DisplayProps,
+  ConditionalProps,
+} from "@/interfaces";
 
-interface TiltFxProps extends React.ComponentProps<typeof Flex> {
+interface ComponentProps
+  extends FlexProps,
+    SpacingProps,
+    SizeProps,
+    StyleProps,
+    CommonProps,
+    DisplayProps,
+    ConditionalProps {}
+
+interface TiltFxProps extends ComponentProps {
   children: React.ReactNode;
 }
 
-const TiltFx: React.FC<TiltFxProps> = ({ children, ...rest }) => {
-  const ref = useRef<HTMLDivElement>(null);
+const TiltFx = forwardRef<HTMLDivElement, TiltFxProps>(({ children, ...rest }, forwardedRef) => {
+  const localRef = useRef<HTMLDivElement>(null);
+  const ref = (forwardedRef || localRef) as React.RefObject<HTMLDivElement>;
   let lastCall = 0;
   let resetTimeout: NodeJS.Timeout;
 
@@ -67,7 +86,7 @@ const TiltFx: React.FC<TiltFxProps> = ({ children, ...rest }) => {
       {children}
     </Flex>
   );
-};
+});
 
-export { TiltFx };
 TiltFx.displayName = "TiltFx";
+export { TiltFx };
