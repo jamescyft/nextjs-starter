@@ -73,9 +73,10 @@ export function RealityMirror({ className }: RealityMirrorProps) {
   return (
     <Flex 
       justifyContent="space-around" 
-      padding="xl"
+      paddingX="xl"
+      paddingY="64"
       background="neutral-weak"
-      gap="xl"
+      gap="24"
       className={className}
     >
       <Flex gap="xl">
@@ -114,9 +115,9 @@ export function RealityMirror({ className }: RealityMirrorProps) {
                   <Flex
                     direction="column"
                     background="neutral-strong"
-                    padding="l"
+                    padding="24"
                     radius="m"
-                    gap="s"
+                    gap="12"
                   >
                     <Flex gap="m" alignItems="center">
                       <Icon
@@ -177,9 +178,9 @@ export function RealityMirror({ className }: RealityMirrorProps) {
                   <Flex
                     direction="column"
                     background="neutral-strong"
-                    padding="l"
+                    padding="24"
                     radius="m"
-                    gap="s"
+                    gap="12"
                   >
                     <Flex gap="m" alignItems="center">
                       <Icon

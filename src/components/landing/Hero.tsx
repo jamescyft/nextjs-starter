@@ -26,8 +26,8 @@ export function Hero({ className, onDemoClick }: HeroProps) {
       fillHeight
       alignItems="center"
       justifyContent="space-between"
-      paddingX="s"
-      paddingY="m"
+      paddingX="xl"
+      paddingY="160"
       background="neutral-weak"
       className={className}
       data-testid="hero-section"
