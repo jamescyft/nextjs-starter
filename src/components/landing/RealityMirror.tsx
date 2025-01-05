@@ -1,0 +1,169 @@
+import React from 'react';
+import { Flex } from '@/once-ui/components/Flex';
+import { RevealFx } from '@/once-ui/components/RevealFx';
+import { Text } from '@/once-ui/components/Text';
+import { Icon } from '@/once-ui/components/Icon';
+
+interface RealityMirrorProps {
+  className?: string;
+}
+
+type CardVariant = 'neutral-strong' | 'warning-strong' | 'brand-strong';
+
+interface Card {
+  title: string;
+  subtitle?: string;
+  icon: 'alert-circle' | 'check-circle' | 'repeat' | 'database' | 'file-text' | 'shield';
+  variant: CardVariant;
+  path?: string;
+}
+
+export function RealityMirror({ className }: RealityMirrorProps) {
+  const realityCards: Card[] = [
+    {
+      title: '3:47 AM: Critical system down',
+      subtitle: '/var/log/syslog: Error code 0x8000FFE',
+      icon: 'alert-circle',
+      variant: 'warning-strong',
+      path: '/sys/devices/critical/status',
+    },
+    {
+      title: 'Your best tech solves it',
+      subtitle: 'Solution logged in ticket #RT-2947',
+      icon: 'check-circle',
+      variant: 'neutral-strong',
+      path: '/api/v1/tickets/RT-2947',
+    },
+    {
+      title: 'Three months later: Same problem, different client',
+      subtitle: 'Knowledge base: 0 matching solutions',
+      icon: 'repeat',
+      variant: 'warning-strong',
+      path: '/kb/search?q=critical+system',
+    },
+  ];
+
+  const aiCards: Card[] = [
+    {
+      title: 'Every solution captured automatically',
+      subtitle: 'API: /v1/knowledge-capture/active',
+      icon: 'database',
+      variant: 'brand-strong',
+      path: '/metrics/capture/success-rate',
+    },
+    {
+      title: 'Knowledge instantly documented',
+      subtitle: 'Connected: IT Glue, ConnectWise',
+      icon: 'file-text',
+      variant: 'brand-strong',
+      path: '/integrations/status',
+    },
+    {
+      title: 'Problems never repeat',
+      subtitle: 'Prevention rate: 94.7%',
+      icon: 'shield',
+      variant: 'brand-strong',
+      path: '/analytics/prevention',
+    },
+  ];
+
+  return (
+    <Flex 
+      justifyContent="space-around" 
+      padding="xl"
+      background="neutral-weak"
+      gap="xl"
+      className={className}
+    >
+      {/* Left side: Reality cards */}
+      <Flex direction="column" gap="l" maxWidth="xl">
+        {realityCards.map((card, index) => (
+          <RevealFx key={card.title} delay={0.2 * index}>
+            <Flex
+              direction="column"
+              background="neutral-strong"
+              padding="l"
+              radius="m"
+              gap="s"
+            >
+              <Flex gap="m" alignItems="center">
+                <Icon
+                  name={card.icon}
+                  size="m"
+                  onBackground={card.variant}
+                />
+                <Text
+                  variant="heading-default-m"
+                  onBackground={card.variant}
+                >
+                  {card.title}
+                </Text>
+              </Flex>
+              {card.subtitle && (
+                <Text
+                  variant="body-default-s"
+                  onBackground="neutral-strong"
+                >
+                  {card.subtitle}
+                </Text>
+              )}
+              {card.path && (
+                <Text
+                  variant="body-default-xs"
+                  onBackground="neutral-weak"
+                >
+                  {card.path}
+                </Text>
+              )}
+            </Flex>
+          </RevealFx>
+        ))}
+      </Flex>
+      
+      {/* Right side: AI cards */}
+      <Flex direction="column" gap="l" maxWidth="xl">
+        {aiCards.map((card, index) => (
+          <RevealFx key={card.title} delay={0.3 * index}>
+            <Flex
+              direction="column"
+              background="neutral-strong"
+              padding="l"
+              radius="m"
+              gap="s"
+            >
+              <Flex gap="m" alignItems="center">
+                <Icon
+                  name={card.icon}
+                  size="m"
+                  onBackground={card.variant}
+                />
+                <Text
+                  variant="heading-default-m"
+                  onBackground={card.variant}
+                >
+                  {card.title}
+                </Text>
+              </Flex>
+              {card.subtitle && (
+                <Text
+                  variant="body-default-s"
+                  onBackground="neutral-strong"
+                >
+                  {card.subtitle}
+                </Text>
+              )}
+              {card.path && (
+                <Text
+                  variant="body-default-xs"
+                  onBackground="neutral-weak"
+                >
+                  {card.path}
+                </Text>
+              )}
+            </Flex>
+          </RevealFx>
+        ))}
+      </Flex>
+    </Flex>
+  );
+}
