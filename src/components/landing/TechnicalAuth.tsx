@@ -71,14 +71,17 @@ export function TechnicalAuth({ className }: TechnicalAuthProps) {
   return (
     <Flex 
       direction="column" 
-      padding="xl"
+      paddingX="xl"
+      paddingY="64"
       background="neutral-weak"
-      gap="xl"
+      gap="24"
       className={className}
     >
-      <Text variant="heading-strong-xl" align="center">
-        Built for MSP Infrastructure
-      </Text>
+      <RevealFx delay={0.2}>
+        <Text variant="heading-strong-xl" align="center">
+          Built for MSP Infrastructure
+        </Text>
+      </RevealFx>
       
       {/* Integration Points */}
       <TiltFx fillWidth radius="xl" overflow="hidden">
@@ -110,9 +113,11 @@ export function TechnicalAuth({ className }: TechnicalAuthProps) {
             }}
           />
           <Flex direction="column" gap="l" position="relative">
-            <Text variant="heading-strong-l">
-              Connects to Your Core Systems
-            </Text>
+            <RevealFx delay={0.3}>
+              <Text variant="heading-strong-l">
+                Connects to Your Core Systems
+              </Text>
+            </RevealFx>
             <Flex gap="l" wrap={true}>
               {integrationPoints.map((point, index) => (
                 <RevealFx key={point.title} delay={0.2 * index}>
@@ -166,9 +171,11 @@ export function TechnicalAuth({ className }: TechnicalAuthProps) {
 
       {/* Implementation Points */}
       <Flex direction="column" gap="l">
-        <Text variant="heading-strong-l">
-          Implementation That Makes Sense
-        </Text>
+        <RevealFx delay={0.3}>
+          <Text variant="heading-strong-l">
+            Implementation That Makes Sense
+          </Text>
+        </RevealFx>
         <Flex gap="l" wrap={true}>
           {implementationPoints.map((point, index) => (
             <RevealFx key={point.title} delay={0.2 * index}>

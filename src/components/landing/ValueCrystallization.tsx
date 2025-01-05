@@ -51,13 +51,16 @@ export function ValueCrystallization() {
   return (
     <Flex 
       direction="column"
-      padding="xl"
-      gap="xl"
+      paddingX="xl"
+      paddingY="64"
+      gap="24"
       background="neutral-strong"
     >
-      <Text variant="heading-strong-xl" align="center">
-        Turn Knowledge Into Value
-      </Text>
+      <RevealFx delay={0.2}>
+        <Text variant="heading-strong-xl" align="center">
+          Turn Knowledge Into Value
+        </Text>
+      </RevealFx>
       
       <TiltFx fillWidth radius="xl" overflow="hidden">
         <HoloFx fill>
