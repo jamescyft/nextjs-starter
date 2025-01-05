@@ -37,8 +37,8 @@ import {
   Column,
   Row,
   StyleOverlay,
-} from "@/components/once-ui";
-import { CodeBlock, MediaUpload } from "@/components/once-ui";
+} from "@/once-ui/components";
+import { CodeBlock, MediaUpload } from "@/once-ui/modules";
 
 export default function Home() {
   const [selectedValue, setSelectedValue] = useState("");
@@ -97,7 +97,7 @@ export default function Home() {
   };
 
   return (
-    <Column fillWidth paddingY="80" paddingX="16" alignItems="center" flex={1}>
+    <Column fillWidth paddingY="80" paddingX="s" alignItems="center" flex={1}>
       <Fade
         zIndex={3}
         pattern={{
@@ -115,8 +115,8 @@ export default function Home() {
       <Row position="fixed" top="0" fillWidth justifyContent="center" zIndex={3}>
         <Row
           data-border="rounded"
-          justifyContent="between"
-          maxWidth={1200}
+          justifyContent="space-between"
+          maxWidth="l"
           paddingRight="64"
           paddingLeft="32"
           paddingY="20"
@@ -159,7 +159,7 @@ export default function Home() {
       <Column
         overflow="hidden"
         as="main"
-        maxWidth={1200}
+        maxWidth="l"
         position="relative"
         radius="xl"
         alignItems="center"
@@ -368,7 +368,7 @@ export default function Home() {
                     id="email"
                     label="Email"
                     labelAsPlaceholder
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+                    onChange={(e) => setEmail(e.target.value)}
                     value={email}
                     validate={validateLogin}
                     errorMessage={false}
@@ -380,7 +380,7 @@ export default function Home() {
                     label="Password"
                     labelAsPlaceholder
                     radius="bottom"
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+                    onChange={(e) => setPassword(e.target.value)}
                     value={password}
                     validate={validateLogin}
                   />
@@ -392,7 +392,7 @@ export default function Home() {
                   fillWidth
                   onClick={() => {
                     addToast({
-                      type: "success",
+                      variant: "success",
                       message: "Wohoo! It's a toast!",
                     });
                   }}
@@ -464,15 +464,15 @@ export default function Home() {
                     fill
                     position="absolute"
                     padding="24"
-                    justifyContent="end"
+                    justifyContent="flex-end"
                     gap="12"
                     onSolid="neutral-strong"
                   >
                     <Text variant="body-default-xl">Lorant One</Text>
                     <Row
                       fillWidth
-                      justifyContent="between"
-                      alignItems="end"
+                      justifyContent="space-between"
+                      alignItems="flex-end"
                       paddingRight="16"
                     >
                       <Column gap="4">
@@ -487,7 +487,7 @@ export default function Home() {
             </TiltFx>
           </Row>
           <Column position="relative" fillWidth gap="-1">
-            <Row fillWidth alignItems="center" justifyContent="between" marginBottom="32">
+            <Row fillWidth alignItems="center" justifyContent="space-between" marginBottom="32">
               <Heading as="h3" variant="display-default-xs">
                 Fill in your card details
               </Heading>
@@ -614,7 +614,7 @@ export default function Home() {
                 fitWidth
                 gap="40"
                 mobileDirection="column"
-                onChange={(range: DateRange) => setSelectedRange(range)}
+                onChange={(range) => setSelectedRange(range)}
                 value={selectedRange}
               />
             </Row>
@@ -782,32 +782,32 @@ export default function Home() {
                     {
                       value: "Austria",
                       label: "Austria",
-                      onClick: (value: string) => console.log("Visiblity set: ", value),
+                      onClick: (value) => console.log("Visiblity set: ", value),
                     },
                     {
                       value: "Finland",
                       label: "Finland",
-                      onClick: (value: string) => console.log("Visiblity set: ", value),
+                      onClick: (value) => console.log("Visiblity set: ", value),
                     },
                     {
                       value: "New Zeland",
                       label: "New Zeland",
-                      onClick: (value: string) => console.log("Visiblity set: ", value),
+                      onClick: (value) => console.log("Visiblity set: ", value),
                     },
                     {
                       value: "Norway",
                       label: "Norway",
-                      onClick: (value: string) => console.log("Visiblity set: ", value),
+                      onClick: (value) => console.log("Visiblity set: ", value),
                     },
                     {
                       value: "United Kingdom",
                       label: "United Kingdom",
-                      onClick: (value: string) => console.log("Visiblity set: ", value),
+                      onClick: (value) => console.log("Visiblity set: ", value),
                     },
                     {
                       value: "United States",
                       label: "United States",
-                      onClick: (value: string) => console.log("Visiblity set: ", value),
+                      onClick: (value) => console.log("Visiblity set: ", value),
                     },
                   ]}
                   onSelect={handleSelect}
@@ -901,7 +901,7 @@ export default function Home() {
           minHeight={28}
           paddingBottom="80"
           justifyContent="center"
-          alignItems="end"
+          alignItems="flex-end"
         >
           <Background
             mask={{
@@ -954,7 +954,7 @@ export default function Home() {
           position="relative"
           as="footer"
           fillWidth
-          paddingX="32"
+          paddingX="l"
           paddingTop="128"
           paddingBottom="80"
         >
