@@ -1,0 +1,51 @@
+# Architecture Analysis Notes
+
+## Once UI Structure
+- Components located in src/once-ui/components/
+- Uses Sass modules for styling (.module.scss files)
+- Uses Floating UI for dropdown positioning
+- Component-specific styles in individual .module.scss files
+
+## Key Differences from Current Architecture
+1. Styling System:
+   - Once UI: Sass modules with component-specific .module.scss files
+   - Current: Tailwind CSS with global styles
+
+2. Animation System:
+   - Once UI: Custom RevealFx component and Floating UI for positioning
+   - Current: Framer Motion with ANIMATION_KEYS system
+
+3. Component Structure:
+   - Once UI: Flat structure in src/once-ui/components/
+   - Current: Organized in ui/, animations/, landing/ subdirectories
+
+4. State Management:
+   - Once UI: Standard React hooks with component-specific logic
+   - Current: Custom hooks (useAnimationSequence) for animations
+
+## Integration Strategy
+1. Primary Infrastructure (Once UI):
+   - Keep Once UI's component library as base
+   - Preserve token system and component patterns
+   - Maintain Once UI's component composition approach
+
+2. Animation Integration:
+   - Keep RevealFx as primary animation component
+   - Adapt Framer Motion patterns to enhance RevealFx where needed
+   - Preserve ANIMATION_KEYS system for consistency
+
+3. Styling Approach:
+   - Keep Once UI's styling system as primary
+   - Integrate desertSystem tokens into Once UI's theme
+   - Use Sass modules as primary, Tailwind as enhancement
+
+4. Directory Structure:
+   - Follow current organization (ui/, animations/, landing/)
+   - Place Once UI components in appropriate categories
+   - Maintain clear separation of concerns
+
+## User Requirements
+- Use Once UI as primary infrastructure
+- Maintain existing patterns where possible
+- Keep current directory structure
+- Preserve animation and styling consistency

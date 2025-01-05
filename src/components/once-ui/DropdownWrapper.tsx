@@ -17,23 +17,23 @@ import {
   autoUpdate,
   Placement,
 } from "@floating-ui/react-dom";
-import { Flex, Dropdown } from ".";
+import { Flex } from "../ui/Flex";
+import { Dropdown } from "../ui/Dropdown";
 import styles from "./DropdownWrapper.module.scss";
 
-export interface DropdownWrapperProps {
-  fillWidth?: boolean;
-  minWidth?: number;
-  maxWidth?: number;
-  minHeight?: number;
+import type { FlexProps, SpacingProps, SizeProps, StyleProps, CommonProps, DisplayProps, ConditionalProps } from "../../interfaces";
+
+export interface DropdownWrapperProps extends FlexProps, SpacingProps, SizeProps, StyleProps, CommonProps, DisplayProps, ConditionalProps {
   floatingPlacement?: Placement;
   trigger: ReactNode;
   dropdown: ReactNode;
   selectedOption?: string;
-  style?: React.CSSProperties;
-  className?: string;
   onSelect?: (value: string) => void;
   isOpen?: boolean;
   onOpenChange?: (isOpen: boolean) => void;
+  tabIndex?: number;
+  "aria-haspopup"?: string;
+  "aria-expanded"?: boolean;
 }
 
 const DropdownWrapper = forwardRef<HTMLDivElement, DropdownWrapperProps>(
@@ -81,9 +81,9 @@ const DropdownWrapper = forwardRef<HTMLDivElement, DropdownWrapperProps>(
           apply({ availableWidth, availableHeight, elements }) {
             Object.assign(elements.floating.style, {
               width: maxWidth || fillWidth ? "100%" : "auto",
-              minWidth: minWidth ? `${minWidth}rem` : undefined,
-              maxWidth: maxWidth ? `${maxWidth}rem` : `${availableWidth}px`,
-              minHeight: `${Math.min(minHeight || 0)}px`,
+              minWidth: typeof minWidth === 'number' ? `${minWidth}rem` : undefined,
+              maxWidth: typeof maxWidth === 'number' ? `${maxWidth}rem` : `${availableWidth}px`,
+              minHeight: typeof minHeight === 'number' ? `${minHeight}px` : '0px',
               maxHeight: `${availableHeight}px`,
             });
           },
@@ -145,7 +145,7 @@ const DropdownWrapper = forwardRef<HTMLDivElement, DropdownWrapperProps>(
         gap="-1"
         transition="macro-medium"
         style={{
-          ...(minHeight && isOpen
+          ...(typeof minHeight === 'number' && isOpen
             ? {
                 marginBottom: `${minHeight + 48}px`,
               }
@@ -156,7 +156,7 @@ const DropdownWrapper = forwardRef<HTMLDivElement, DropdownWrapperProps>(
         position="relative"
         ref={wrapperRef}
         onClick={() => handleOpenChange(!isOpen)}
-        onKeyDown={(e) => {
+        onKeyDown={(e: React.KeyboardEvent) => {
           if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
             handleOpenChange(!isOpen);

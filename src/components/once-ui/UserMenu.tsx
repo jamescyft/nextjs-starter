@@ -2,7 +2,10 @@
 
 import React from "react";
 import classNames from "classnames";
-import { Flex, DropdownWrapper, User, UserProps } from ".";
+import { Flex } from "../ui/Flex";
+import { User } from "../ui/User";
+import type { UserProps } from "../ui/User";
+import { DropdownWrapper } from "./DropdownWrapper";
 import styles from "./UserMenu.module.scss";
 import { DropdownWrapperProps } from "./DropdownWrapper";
 

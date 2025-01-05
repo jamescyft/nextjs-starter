@@ -11,8 +11,8 @@ import {
   CommonProps,
   DisplayProps,
   ConditionalProps,
-} from "../interfaces";
-import { TextVariant, SpacingToken, ColorScheme, ColorWeight } from "../types";
+} from "../../interfaces";
+import { TextVariant, SpacingToken, ColorScheme, ColorWeight } from "../../types";
 
 interface ComponentProps
   extends FlexProps,
@@ -251,6 +251,7 @@ const Flex = forwardRef<HTMLDivElement, ComponentProps>(
     ): string | undefined => {
       if (value === undefined) return undefined;
       if (typeof value === "number") return `${value}rem`;
+      if (value === "-1") return "-1px";
       if (
         [
           "0",

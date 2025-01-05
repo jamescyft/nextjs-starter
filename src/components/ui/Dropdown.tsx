@@ -1,17 +1,18 @@
 "use client";
 
 import React, { ReactNode, forwardRef, SyntheticEvent } from "react";
-import { Flex } from ".";
+import { Flex } from "./Flex";
+import type { FlexProps, SpacingProps, SizeProps, StyleProps, CommonProps, DisplayProps, ConditionalProps } from "../../interfaces";
 
-interface DropdownProps extends Omit<React.ComponentProps<typeof Flex>, "onSelect"> {
+interface DropdownProps extends FlexProps, SpacingProps, SizeProps, StyleProps, CommonProps, DisplayProps, ConditionalProps {
   selectedOption?: string;
-  children?: ReactNode;
   onEscape?: () => void;
   onSelect?: (event: string) => void;
+  radius?: string;
 }
 
 const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
-  ({ selectedOption, className, children, onEscape, onSelect, ...rest }, ref) => {
+  ({ selectedOption, className, children, onEscape, onSelect, radius = "l", ...rest }, ref) => {
     const handleSelect = (event: SyntheticEvent<HTMLDivElement>) => {
       const value = event.currentTarget.getAttribute("data-value");
       if (onSelect && value) {
@@ -30,6 +31,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
         ref={ref}
         role="listbox"
         onClick={handleSelect}
+        radius={radius}
         {...rest}
       >
         {children}
